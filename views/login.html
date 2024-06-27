@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <title>Mercado Liebre</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo-search">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="/images/logo-mercado-liebre.svg" width="250px" alt="Logo">
+                </a>
+            </div>
+            <div class="search-container">
+                <input type="search" placeholder="Buscar productos, marcas, etc.">
+            </div>
+            <div class="burger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div class="container">
+                <form>
+                    <div>
+                        <label for="usuario">Nombre de usuario:</label>
+                        <input type="text" id="usuario" name="usuario" required>
+                        <p class="error-message" id="usuario-error"></p>
+                    </div>
+                    <div>
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" id="contrasena" name="contrasena" required>
+                        <p class="error-message" id="contrasena-error"></p>
+                    </div>
+                    <div class="boton">
+                        <button type="submit">Iniciar Sesión</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="contenedor-footer">
+            <section class="column-1">
+                <i class="fas fa-credit-card"></i>
+                <h3>Pagá con tarjeta o en efectivo</h3>
+                <p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de pago. ¡Y siempre es seguro!</p>
+            </section>
+            <section class="column-2">
+                <i class="fas fa-truck"></i>
+                <h3>Envío gratis desde $2.500</h3>
+                <p>Solo por estar registrado en Mercado Liebre tenés envíos gratis en miles de productos. Es un beneficio de Mercado Puntos.</p>
+            </section>
+            <section class="column-3">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Seguridad, de principio a fin</h3>
+                <p>¿No te gusta? ¡Devolvelo! En Mercado Liebre, no hay nada que no puedas hacer, porque estás siempre protegido.</p>
+            </section>
+        </div>
+        <div class="parrafo-final-footer">
+            <p>Copyright © 1999-2020 MercadoLiebre S.R.L.</p>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.querySelector('form');
+        const usernameInput = document.getElementById('usuario');
+        const passwordInput = document.getElementById('contrasena');
+        const usernameError = document.getElementById('usuario-error');
+        const passwordError = document.getElementById('contrasena-error');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            let isValid = true;
+
+            if (username.length < 5) {
+                isValid = false;
+                usernameError.textContent = 'El nombre de usuario debe tener al menos 3 caracteres.';
+                usernameError.style.display = 'block';
+            } else {
+                usernameError.textContent = '';
+                usernameError.style.display = 'none';
+            }
+
+            if (password.length < 8) {
+                isValid = false;
+                passwordError.textContent = 'La contraseña debe tener al menos 8 caracteres.';
+                passwordError.style.display = 'block';
+            } else {
+                passwordError.textContent = '';
+                passwordError.style.display = 'none';
+            }
+
+            if (!isValid) {
+                return;
+            }
+
+            alert('¡Formulario enviado con éxito!')
+        });
+    </script>
+</body>
+
+</html>
